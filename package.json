@@ -1,0 +1,23 @@
+{
+  "name": "converty-backend",
+  "version": "0.0.1",
+  "description": "Backend for converty-frontend project",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node dist/main.js",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.5",
+    "typescript": "^5.6.2",
+    "dotenv": "^16.4.5"
+  }
+}

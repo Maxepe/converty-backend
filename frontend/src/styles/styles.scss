@@ -1,0 +1,47 @@
+@import "./variables/colors";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
+
+// -mediaq
+html {
+  font-size: 16px;
+}
+
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+// Full HD
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 19px;
+  }
+}
+
+// (2K and above)
+@media screen and (min-width: 2560px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+// (4K and above)
+@media screen and (min-width: 3840px) {
+  html {
+    font-size: 22px;
+  }
+}
+// -mediaq
+
+body {
+  color: $surface-600;
+  background-color: $surface-100;
+  font-family: "Noto Sans Mono", monospace;
+}

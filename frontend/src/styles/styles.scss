@@ -1,8 +1,11 @@
 @import "./variables/colors";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
 
 // -mediaq
-html {
+/* html {
   font-size: 16px;
 }
 
@@ -37,11 +40,9 @@ html {
   html {
     font-size: 22px;
   }
-}
+} */
 // -mediaq
 
-body {
-  color: $surface-600;
-  background-color: $surface-100;
-  font-family: "Noto Sans Mono", monospace;
-}
+// body {
+//   font-family: "Noto Sans Mono", monospace;
+// }

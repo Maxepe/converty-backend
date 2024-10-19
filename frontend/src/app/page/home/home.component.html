@@ -1,31 +1,47 @@
-<main class="font-noto bg-surface-100 text-surface-600 h-screen">
-  <section class="px-6 py-6 mx-3">
-    <div class="flex flex-col text-center md:text-4xl lg:text-6xl">
-        <h1>Converty</h1>
+<main class="font-noto bg-surface-1000 min-h-screen max-w-screen">
+  <section class="mx-3">
+    <div class="flex flex-col text-center text-4xl lg:text-6xl">
+      <h1 class="px-6 py-6 text-primary-300">Nekonverter</h1>
     </div>
   </section>
-  <section class="px-8 mt-8">
-    <div class="flex flex-col text-center">
-      <div class="flex flex-row w-full gap-32 p-20 bg-surface-600 text-surface-100 rounded-2xl border-8 border-surface-400">
-        <div class="flex flex-col bg-primary-100 text-primary-600 rounded-2xl p-6 text-2xl w-1/2">
-          <div class="m-8">
-            Vinculá tus cuentas y visualiza las playlists que querés convertir
-          </div>
-          <div class="m-8">
-            <button class="animated-btn bg-primary-600 text-primary-100 rounded-3xl border-surface-300 p-4 m-5 w-1/2">
-              Click
-            </button>
-          </div>
+  <section class="m-8 max-w-full">
+    <!-- <div class="flex flex-col md:hidden">
+      Content visible on mobile (less than 768px)
+      <p>This is mobile content!</p>
+    </div>
+    
+    <div class="hidden md:block lg:hidden">
+      Content visible on tablet and small desktop (768px - 1024px)
+      <p>This is tablet content!</p>
+    </div>
+    
+    <div class="hidden lg:block">
+      Content visible on large desktop (1024px and up)
+      <p>This is desktop content!</p>
+    </div> -->
+    <div class="flex flex-col lg:flex-row bg-surface-2000 text-white rounded-3xl p-2 sm:p-16 gap-20 lg:gap-52 xl:justify-evenly md:min-h-0 max-w-full">      
+      <button class="flex sm:m-3 bg-primary-100 size-full lg:size-1/2 rounded-2xl text-center text-balance animated-btn p-4 md:p-20 border-surface-100 min-h-40 sm:min-h-60 justify-center items-center shadow-md sm:shadow-lg shadow-primary-200 active:border-b-2">
+        Vinculá tu cuenta y accedé a más funcionalidades
+      </button>
+      <div class="flex flex-col sm:m-3 sm:gap-5 bg-primary-100 lg:size-1/2 rounded-2xl p-4 justify-center items-center max-h-fit min-h-40 sm:min-h-60 shadow-md sm:shadow-lg shadow-primary-200">
+        <span class="m-3 sm:m-10 text-center text-balance">Convertí con la URL:</span>
+        <input class="sm:hidden text-black border-2 border-surface-600 rounded-2xl p-2 sm:p-4 md:min-w-[80%] max-w-full">
+        <div class="sm:hidden flex flex-row items-center max-w-fit gap-5">
+          <button class="border-2 m-4">Icono source</button>
+          <select id="selectTarget" class="max-h-fit m-4">
+            <option>1</option>
+            <option>1</option>
+          </select>
         </div>
-        <div class="flex flex-col bg-primary-100 text-primary-600 rounded-2xl p-6 text-2xl w-1/2">
-          <div class="m-8">
-            Vinculá tus cuentas y visualiza las playlists que querés convertir
-          </div>
-          <div class="m-8">
-            <button class="animated-btn bg-primary-600 text-primary-100 rounded-3xl border-surface-300 p-4 m-5 w-1/2">
-              Click
-            </button>
-          </div>
+        <div class="hidden sm:flex flex-row items-center justify-center gap-10">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+          </svg>
+          <input class="text-black border-2 border-surface-600 rounded-xl p-2 sm:p-4 " placeholder="input">
+          <select id="selectTarget" class="max-h-fit">
+            <option>1</option>
+            <option>1</option>
+          </select>
         </div>
       </div>
     </div>

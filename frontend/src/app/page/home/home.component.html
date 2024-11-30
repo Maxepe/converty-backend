@@ -7,84 +7,85 @@
   </header>
 
   <!-- Main content with reduced top margin and added mx-6 -->
-  <main class="flex items-center justify-center py-2 mx-6">
+  <main class="flex items-center justify-center mx-6">
     <div class="w-full max-w-md">
       <!-- Main View -->
       <div *ngIf="activeView === 'main'" class="space-y-4">
         <button 
           (click)="setActiveView('connect')"
-          class="w-full bg-secondary hover:bg-accent-extraDark text-white font-bold py-8 px-4 md:py-12 md:px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-opacity-50"
-        >
-          <span class="block w-16 h-16 mx-auto mb-2 text-3xl">🔗</span>
-          Connect Accounts
+          class="w-full bg-secondary hover:bg-accent-extraDark text-white font-bold py-8 px-4 md:py-12 md:px-6 
+          rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-opacity-50">
+          <span class="block w-12 h-12 mx-auto mb-2 text-3xl">🔗</span>
+          Conectar cuentas
         </button>
         <button 
           (click)="setActiveView('url')"
           class="w-full bg-primary hover:bg-accent-extraDark text-white font-bold py-8 px-4 md:py-12 md:px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-opacity-50"
         >
-          <span class="block w-16 h-16 mx-auto mb-2 text-3xl">🔄</span>
-          Transform by URL
+          <span class="block w-12 h-12 mx-auto mb-2 text-3xl">🔄</span>
+          Convertir con la URL
         </button>
       </div>
 
       <!-- URL Transform View -->
-      <div *ngIf="activeView === 'url'" class="bg-surface bg-opacity-10 p-2 rounded-lg shadow-xl">
-        <h2 class="text-2xl font-bold mb-6 text-center">Transform by URL</h2>
+      <div *ngIf="activeView === 'url'" class="bg-surface bg-opacity-10 rounded-lg shadow-xl">
+        <h2 class="text-2xl font-bold mb-6 text-center">Convertir con la URL</h2>
         <form class="space-y-6">
           <div>
             <label for="playlist-url" class="block text-sm font-medium mb-2 text-accent-light">Playlist URL</label>
             <input type="url" name="playlist-url" id="playlist-url" class="w-full px-4 py-2 rounded-md bg-surface-dark bg-opacity-20 text-white border border-accent-dark focus:outline-none focus:ring-2 focus:ring-accent-light focus:border-transparent" placeholder="https://open.spotify.com/playlist/..." required>
           </div>
           <div>
-            <label for="target-platform" class="block text-sm font-medium mb-2 text-accent-light">Target Platform</label>
-            <select id="target-platform" name="target-platform" class="w-full px-4 py-2 rounded-md bg-surface-dark bg-opacity-20 text-white border border-accent-dark focus:outline-none focus:ring-2 focus:ring-accent-light focus:border-transparent">
-              <option>YouTube</option>
-              <option>Spotify</option>
-            </select>
+            <label for="target-platform" class="block text-sm font-medium mb-2 text-accent-light">Plataforma destino</label>
+            <div class="flex gap-x-5 justify-center">
+              <button type="button" [ngClass]="{'bg-accent-extraDark': isSelected('YouTube'), 'bg-surface-light': !isSelected('YouTube')}" class="text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-opacity-50" (click)="togglePlatform('YouTube')">
+                <span class="block text-xl mx-auto">🎥</span>
+                YouTube
+              </button>
+              <button type="button" [ngClass]="{'bg-accent-extraDark': isSelected('Spotify'), 'bg-surface-light': !isSelected('Spotify')}" class="text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-opacity-50" (click)="togglePlatform('Spotify')">
+                <span class="block text-xl mx-auto">🎵</span>
+                Spotify
+              </button>
+            </div>
           </div>
           <button type="submit" class="w-full px-4 py-2 bg-primary hover:bg-accent-extraDark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
-            Transform Playlist
+            Convertir
           </button>
         </form>
         <button 
           (click)="setActiveView('main')"
           class="mt-4 w-full px-4 py-2 bg-mixed hover:bg-mixed-dark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
         >
-          Back
+          Atrás
         </button>
       </div>
 
       <!-- Connect Accounts View -->
       <div *ngIf="activeView === 'connect'" class="bg-surface bg-opacity-10 p-2 rounded-lg shadow-xl">
-        <h2 class="text-2xl font-bold mb-6 text-center">Connect Your Accounts</h2>
-        <div class="space-y-4">
-          <button class="w-full px-4 py-3 bg-primary hover:bg-accent-extraDark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent flex items-center justify-center space-x-2">
-            <span class="block text-3xl">🎵</span>
-            <span>Connect Spotify</span>
+        <h2 class="text-2xl font-bold mb-6 text-center">Conectar cuentas</h2>
+        <div class="space-y-4 justbe">
+          <button class="w-full justify-between px-4 py-3 bg-primary hover:bg-accent-extraDark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent flex items-center space-x-2">
+            <span class="block text-2xl">🎵</span>
+            <span>Spotify</span>
           </button>
-          <button class="w-full px-4 py-3 bg-secondary hover:bg-accent-extraDark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent flex items-center justify-center space-x-2">
-            <span class="block text-3xl">🎥</span>
-            <span>Connect YouTube</span>
+          <button class="w-full justify-between px-4 py-3 bg-secondary hover:bg-accent-extraDark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent flex items-center space-x-2">
+            <span class="block text-2xl">🎥</span>
+            <span>YouTube</span>
           </button>
         </div>
         <button 
           (click)="setActiveView('main')"
-          class="mt-4 w-full px-4 py-2 bg-mixed hover:bg-mixed-dark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
-        >
-          Back
+          class="mt-4 w-full px-4 py-2 bg-mixed hover:bg-mixed-dark text-white font-medium rounded-md transition-colors duration-200 
+            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
+          Atrás
         </button>
       </div>
     </div>
   </main>
 
-  <!-- Footer with space for AI generated playlists -->
-  <footer class="flex-grow bg-black bg-opacity-30 mt-auto pb-16">
-    <!-- <div class="container mx-auto px-4 py-4">
-      <p class="text-center text-sm text-gray-400">&copy; 2023 Playlist Transformer. All rights reserved.</p>
-    </div> -->
+  <footer class="flex-grow bg-black bg-opacity-30 mt-auto pb-16 max-h-[35vh]">
     <div class="container mx-auto px-4 py-4">
       <h2 class="text-lg font-bold text-center mb-4 text-accent">Suggested AI Generated Playlists</h2>
-      <!-- Placeholder for AI generated playlists -->
       <div id="ai-playlists" class="text-center text-sm text-white"></div>
     </div>
   </footer>

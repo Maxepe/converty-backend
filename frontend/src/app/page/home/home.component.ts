@@ -7,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  ngOnInit(): void {
+  title = 'NeKonverter';
+  activeView: 'main' | 'url' | 'connect' = 'main';
+
+  setActiveView(view: 'main' | 'url' | 'connect') {
+    this.activeView = view;
   }
 
-  public clicksDiv(): void {
-    console.log(`clicks div`);
-    
+  ngOnInit(): void {
   }
 }

@@ -6,38 +6,32 @@ module.exports = {
       'white': '#ffffff',
       'black': '#000000',
       primary: {
-        100: "#62008f",
-        200: "#752a9c",
-        300: "#8846a8",
-        400: "#9a60b5",
-        500: "#ab7ac1",
-        600: "#bc94ce",
+        light: "#ab7ac1",
+        DEFAULT: "#8846a8",
+        dark: "#62008f",
+      },
+      secondary: {
+        light: "#858AE3",
+        DEFAULT: "#7348A0",
+        dark: "#4a2574",
       },
       surface: {
-        100: "#0f0529",
-        1000: "#15061e",
-        200: "#461177",
-        2000: "#292033",
-        300: "#4a2574",
-        3000: "#403849",
-        400: "#7338a0",
-        4000: "#595160",
-        500: "#924dbf",
-        5000: "#726b79",
-        600: "#9e72c3",
-        6000: "#8d8792",
-        650: "#dfc6f062",
-        700: "#858AE3",
-        800: "#858AE3"
+        light: "#8d8792",
+        DEFAULT: "#292033",
+        dark: "#0f0529",
       },
       mixed: {
-        100: "#1c0b28",
-        200: "#31223d",
-        300: "#483a52",
-        400: "#605369",
-        500: "#786d80",
-        600: "#928898"
-      }
+        light: "#928898",
+        DEFAULT: "#605369",
+        dark: "#1c0b28",
+      },
+      accent: {
+        light: "#59d9d9",
+        DEFAULT: "#48c4c4",
+        dark: "#399c9c",
+        extraDark: "#2a7272"
+      },
+      transparent: 'transparent',
     },
     fontFamily: {
       noto: ["Noto Sans Mono", 'monospace']

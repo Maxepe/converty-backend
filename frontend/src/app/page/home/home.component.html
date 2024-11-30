@@ -1,49 +1,91 @@
-<main class="font-noto bg-surface-1000 min-h-screen max-w-screen">
-  <section class="mx-3">
-    <div class="flex flex-col text-center text-4xl lg:text-6xl">
-      <h1 class="px-6 py-6 text-primary-300">Nekonverter</h1>
+<div class="min-h-screen bg-gradient-to-b from-surface-dark to-primary-light text-white flex flex-col gap-6">
+  <!-- Header -->
+  <header class="bg-black bg-opacity-30 shadow-lg">
+    <div class="container mx-auto px-4 py-4">
+      <h1 class="text-2xl font-bold text-center">{{ title }}</h1>
     </div>
-  </section>
-  <section class="m-8 max-w-full">
-    <!-- <div class="flex flex-col md:hidden">
-      Content visible on mobile (less than 768px)
-      <p>This is mobile content!</p>
-    </div>
-    
-    <div class="hidden md:block lg:hidden">
-      Content visible on tablet and small desktop (768px - 1024px)
-      <p>This is tablet content!</p>
-    </div>
-    
-    <div class="hidden lg:block">
-      Content visible on large desktop (1024px and up)
-      <p>This is desktop content!</p>
-    </div> -->
-    <div class="flex flex-col lg:flex-row bg-surface-2000 text-white rounded-3xl p-2 sm:p-16 gap-20 lg:gap-52 xl:justify-evenly md:min-h-0 max-w-full">      
-      <button class="flex sm:m-3 bg-primary-100 size-full lg:size-1/2 rounded-2xl text-center text-balance animated-btn p-4 md:p-20 border-surface-100 min-h-40 sm:min-h-60 justify-center items-center shadow-md sm:shadow-lg shadow-primary-200 active:border-b-2">
-        Vinculá tu cuenta y accedé a más funcionalidades
-      </button>
-      <div class="flex flex-col sm:m-3 sm:gap-5 bg-primary-100 lg:size-1/2 rounded-2xl p-4 justify-center items-center max-h-fit min-h-40 sm:min-h-60 shadow-md sm:shadow-lg shadow-primary-200">
-        <span class="m-3 sm:m-10 text-center text-balance">Convertí con la URL:</span>
-        <input class="sm:hidden text-black border-2 border-surface-600 rounded-2xl p-2 sm:p-4 md:min-w-[80%] max-w-full">
-        <div class="sm:hidden flex flex-row items-center max-w-fit gap-5">
-          <button class="border-2 m-4">Icono source</button>
-          <select id="selectTarget" class="max-h-fit m-4">
-            <option>1</option>
-            <option>1</option>
-          </select>
+  </header>
+
+  <!-- Main content with reduced top margin and added mx-6 -->
+  <main class="flex items-center justify-center py-2 mx-6">
+    <div class="w-full max-w-md">
+      <!-- Main View -->
+      <div *ngIf="activeView === 'main'" class="space-y-4">
+        <button 
+          (click)="setActiveView('connect')"
+          class="w-full bg-secondary hover:bg-accent-extraDark text-white font-bold py-8 px-4 md:py-12 md:px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-opacity-50"
+        >
+          <span class="block w-16 h-16 mx-auto mb-2 text-3xl">🔗</span>
+          Connect Accounts
+        </button>
+        <button 
+          (click)="setActiveView('url')"
+          class="w-full bg-primary hover:bg-accent-extraDark text-white font-bold py-8 px-4 md:py-12 md:px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-light focus:ring-opacity-50"
+        >
+          <span class="block w-16 h-16 mx-auto mb-2 text-3xl">🔄</span>
+          Transform by URL
+        </button>
+      </div>
+
+      <!-- URL Transform View -->
+      <div *ngIf="activeView === 'url'" class="bg-surface bg-opacity-10 p-2 rounded-lg shadow-xl">
+        <h2 class="text-2xl font-bold mb-6 text-center">Transform by URL</h2>
+        <form class="space-y-6">
+          <div>
+            <label for="playlist-url" class="block text-sm font-medium mb-2 text-accent-light">Playlist URL</label>
+            <input type="url" name="playlist-url" id="playlist-url" class="w-full px-4 py-2 rounded-md bg-surface-dark bg-opacity-20 text-white border border-accent-dark focus:outline-none focus:ring-2 focus:ring-accent-light focus:border-transparent" placeholder="https://open.spotify.com/playlist/..." required>
+          </div>
+          <div>
+            <label for="target-platform" class="block text-sm font-medium mb-2 text-accent-light">Target Platform</label>
+            <select id="target-platform" name="target-platform" class="w-full px-4 py-2 rounded-md bg-surface-dark bg-opacity-20 text-white border border-accent-dark focus:outline-none focus:ring-2 focus:ring-accent-light focus:border-transparent">
+              <option>YouTube</option>
+              <option>Spotify</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full px-4 py-2 bg-primary hover:bg-accent-extraDark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
+            Transform Playlist
+          </button>
+        </form>
+        <button 
+          (click)="setActiveView('main')"
+          class="mt-4 w-full px-4 py-2 bg-mixed hover:bg-mixed-dark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+        >
+          Back
+        </button>
+      </div>
+
+      <!-- Connect Accounts View -->
+      <div *ngIf="activeView === 'connect'" class="bg-surface bg-opacity-10 p-2 rounded-lg shadow-xl">
+        <h2 class="text-2xl font-bold mb-6 text-center">Connect Your Accounts</h2>
+        <div class="space-y-4">
+          <button class="w-full px-4 py-3 bg-primary hover:bg-accent-extraDark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent flex items-center justify-center space-x-2">
+            <span class="block text-3xl">🎵</span>
+            <span>Connect Spotify</span>
+          </button>
+          <button class="w-full px-4 py-3 bg-secondary hover:bg-accent-extraDark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent flex items-center justify-center space-x-2">
+            <span class="block text-3xl">🎥</span>
+            <span>Connect YouTube</span>
+          </button>
         </div>
-        <div class="hidden sm:flex flex-row items-center justify-center gap-10">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-          </svg>
-          <input class="text-black border-2 border-surface-600 rounded-xl p-2 sm:p-4 " placeholder="input">
-          <select id="selectTarget" class="max-h-fit">
-            <option>1</option>
-            <option>1</option>
-          </select>
-        </div>
+        <button 
+          (click)="setActiveView('main')"
+          class="mt-4 w-full px-4 py-2 bg-mixed hover:bg-mixed-dark text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+        >
+          Back
+        </button>
       </div>
     </div>
-  </section>
-</main>
+  </main>
+
+  <!-- Footer with space for AI generated playlists -->
+  <footer class="flex-grow bg-black bg-opacity-30 mt-auto pb-16">
+    <!-- <div class="container mx-auto px-4 py-4">
+      <p class="text-center text-sm text-gray-400">&copy; 2023 Playlist Transformer. All rights reserved.</p>
+    </div> -->
+    <div class="container mx-auto px-4 py-4">
+      <h2 class="text-lg font-bold text-center mb-4 text-accent">Suggested AI Generated Playlists</h2>
+      <!-- Placeholder for AI generated playlists -->
+      <div id="ai-playlists" class="text-center text-sm text-white"></div>
+    </div>
+  </footer>
+</div>
